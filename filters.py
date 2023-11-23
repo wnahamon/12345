@@ -126,3 +126,20 @@ class EmbossFilter(Filter):
     def apply_to_image(self, img: Image.Image) -> Image.Image:
         new_img = img.filter(ImageFilter.EMBOSS)
         return new_img
+
+class MirrorFilter(Filter):
+    def apply_to_image(self, img: Image.Image) -> Image.Image:
+        global new_b
+        global new_g
+        global new_r
+        global r, g, b
+        img1 = img.convert('RGB')
+        for y in range(img.height):
+            for x in range(img.width // 2):
+                new_r, new_g, new_b = img.getpixel((img.width - x - 1, y))
+                img.putpixel((x, y), (new_r, new_g, new_b))
+        for y in range(img1.height):
+            for x in range(img1.width // 2, img1.width):
+                new_r, new_g, new_b = img1.getpixel((img1.width - x - 1, y))
+                img.putpixel((x, y), (new_r, new_g, new_b))
+        return img
