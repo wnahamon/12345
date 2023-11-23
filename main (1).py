@@ -1,5 +1,5 @@
 from PIL import Image
-from filters import BrightFilter, DarkFilter, InverseFilter, BlurFilter, EdgeEnhance,  SharpFilter, EmbossFilter, MirrorFilter
+from filters import BrightFilter, DarkFilter, InverseFilter, BlurFilter, EdgeEnhance,  SharpFilter, EmbossFilter, MirrorFilter, Split_Filer
 import os
 
 
@@ -14,7 +14,8 @@ def main():
         "edge enhance",
         "Sharp Filter",
         "emboss filter",
-        "mirror filter"
+        "mirror filter",
+        "Split_Filer"
     ]
 
     filters = [
@@ -25,7 +26,8 @@ def main():
         EdgeEnhance(),
         SharpFilter(),
         EmbossFilter(),
-        MirrorFilter()
+        MirrorFilter(),
+        Split_Filer()
     ]
 
     print("welcome to console photoshop")
@@ -45,7 +47,7 @@ def main():
         choice = input("choice filter (input number): ")
 
         while True:
-            if choice in ["0", "1", "2", "3", "4", "5", "6", "7", "8"]:
+            if choice in ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]:
                 break
             else:
                 choice = input("choice from the suggested.")

@@ -47,6 +47,21 @@ class Filter:
                 img.putpixel((i, j), new_pixel)
         return img
 
+class Split_Filer(Filter):
+    def apply_to_image(self, img: Image.Image) -> Image.Image:
+        picture = img
+        width, height = picture.size
+        for y in range(int(height)): #зелёная половина
+            for x in range(int(width/2)):
+                r, g, b = picture.getpixel((x, y))
+                b = min(255, int(g * 2))
+                picture.putpixel((x, y), (r, g, b))
+        for y in range(int(height)): #красная половина
+            for x in range(int(width/2), width):
+                r, g, b = picture.getpixel((x, y))
+                b = min(255, int(r * 2))
+                picture.putpixel((x, y), (r, g, b))
+        return picture
 
 class BrightFilter(Filter):
     opisanie = (
